@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class CalculatorController {
     private final CalculatorService calculatorService;
 
-    public CalculatorController(CalculatorService calculatorService) {
+    public CalculatorController(CalculatorService calculatorService)
+    {
         this.calculatorService = calculatorService;
     }
 
@@ -22,5 +23,10 @@ public class CalculatorController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/sub")
+    public ResponseEntity<Integer> sub (@RequestParam int a, @RequestParam int b) {
+        int result = calculatorService.sub(a, b);
+        return ResponseEntity.ok(result);
+    }
 
 }
